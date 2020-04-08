@@ -1,0 +1,44 @@
+{
+  "name": "GMC_IP_SETTER",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "build": {
+    "win": {
+      "requestedExecutionLevel": "highestAvailable",
+      "publisherName": "GROUPMAKER"
+    },
+    "files": [
+      "icon.png",
+      "**/*"
+    ],
+    "asar": false
+  },
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder build  --x64 --win --publish never"
+  },
+  "repository": "https://github.com/electron/electron-quick-start",
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "demo"
+  ],
+  "author": "GROUPMAKER",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^8.0.0",
+    "electron-builder": "^22.4.1",
+    "electron-rebuild": "^1.10.1"
+  },
+  "dependencies": {
+    "auto-launch": "^5.0.5",
+    "is-ip": "^3.1.0",
+    "network": "^0.5.0",
+    "node-cmd": "^3.0.0",
+    "node-windows": "^1.0.0-beta.1",
+    "serialport": "^8.0.7"
+  }
+}
