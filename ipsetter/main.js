@@ -2,7 +2,7 @@
 const { app, BrowserWindow, Tray, Menu } = require('electron')
 const path = require('path')
 const AutoLaunch = require('auto-launch');
-
+const fs = require('fs');
 function createWindow() {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
@@ -41,26 +41,34 @@ function createWindow() {
 app.on('ready', () => {
   createWindow();
   let autoLaunch = new AutoLaunch({
-    name: 'GMC IP SETTER',
+    name: 'IP SETTER',
     path: app.getPath('exe'),
   });
   autoLaunch.isEnabled().then((isEnabled) => {
     if (!isEnabled) autoLaunch.enable();
   });
 
+  var image = path.join(__dirname,'./icon.png');
+  // if (fs.existsSync(`./icon.png`)) {
+  //   image = './icon.png';
+  // } else {
+  //   image = './resources/app/icon.png';
+  // }
+
+
   // tray = new Tray('./icon.png');
-  tray = new Tray('./resources/app/icon.png');
+  tray = new Tray(image);
   const contextMenu = Menu.buildFromTemplate([
     {
       label: 'Close', click: function () {
         app.quit();
       }
     },
-
   ])
   tray.setToolTip('GMC IP SETTER is running.')
   tray.setContextMenu(contextMenu);
 })
+
 app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') app.quit()
 })
